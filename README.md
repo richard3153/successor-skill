@@ -1,10 +1,32 @@
-# 继承者 (Successor) - 智能体接替与任务延续 Skill
+# 继承者 (Successor) — 智能体接替与任务延续
 
-[English](README.md) | 中文
+[English](#english) | 中文
 
 ## 概述
 
 **继承者** (Successor) 是一个专为 AI Agent 设计的智能接替与任务延续 Skill。当智能体达到沟通上限、会话重置、或需要新智能体接替工作时，确保上下文、任务、记忆、文件的完整传承。
+
+## 核心职责
+
+当原智能体达到沟通上限、或需要新智能体接替工作时，确保：
+
+1. **上下文完整** — 不遗漏对话历史中的关键决策、任务、偏好
+2. **任务状态** — 当前进行中的工作完整交接
+3. **记忆接管** — 长期记忆文件无缝衔接
+4. **文件/项目接管** — 所有由前任创建的文件、目录、项目完整移交
+5. **断点续传** — 新智能体可从中断处继续，无需重新摸索
+
+## 触发场景
+
+- 原智能体提示"沟通上限"、"即将重置"
+- 用户说"接替之前的工作"、"继续上次的任务"
+- 新会话开始，需要读取历史上下文
+- 需要接管前任创建的文件、代码、文档、项目
+- 任何需要跨智能体延续工作的情况
+
+## 触发关键词
+
+接替, 继承, 延续, 上下文迁移, 任务续接, 记忆交接, 文件接管, 项目延续
 
 ## 使用场景
 
@@ -28,57 +50,33 @@
 - 理解项目结构，评估项目状态
 - 确认关键文件位置和项目进度
 
-## 核心功能
-
-| 功能 | 说明 |
-|------|------|
-| 上下文迁移 | 读取 SOUL.md, IDENTITY.md, USER.md, MEMORY.md |
-| 任务状态衔接 | 识别进行中的任务，待办事项 |
-| 记忆接管 | 长期与短期记忆文件无缝衔接 |
-| 文件/项目接管 | 扫描工作区，识别所有创建的文件和项目 |
-| 断点续传 | 从中断处继续，无需重新摸索 |
-
-## 触发关键词
-
-接替、继承、延续、上下文迁移、任务续接、记忆交接、文件接管、项目延续
-
 ## 安装
 
 ### 通过 SkillHub 安装（推荐）
 
-```bash
+`ash
 skillhub install successor
-```
+`
 
 ### 手动安装
 
-1. 克隆仓库到本地：
-```bash
-git clone https://github.com/your-username/successor-skill.git
-```
+1. 克隆仓库：
+`ash
+git clone https://github.com/richard3153/successor-skill.git
+`
 
-2. 将 `successor` 目录复制到 OpenClaw skills 目录：
-```bash
+2. 复制到 OpenClaw skills 目录：
+`ash
 # Windows
 copy successor %USERPROFILE%\.qclaw\skills\
 
 # macOS / Linux
 cp -r successor ~/.qclaw/skills/
-```
+`
 
-## 使用方法
+## 接替工作流
 
-### 基础接替
-
-当需要接替前任智能体工作时：
-
-1. **自动触发**：提及"接替"、"继续"、"继承"等关键词时自动激活
-2. **读取上下文**：自动扫描并读取相关上下文文件
-3. **构建摘要**：向用户确认接替状态
-
-### 接替工作流
-
-```
+`
 1. 读取上下文文件
    ├── SOUL.md          → 智能体身份与风格
    ├── IDENTITY.md      → 名称、经历、配置
@@ -101,36 +99,28 @@ cp -r successor ~/.qclaw/skills/
    ├── 确认文件修改进度
    ├── 检查外部操作状态
    └── 继续执行任务
-```
+`
 
 ## 目录结构
 
-```
+`
 successor/
 ├── SKILL.md                         # 核心技能定义
+├── README.md                        # 双语说明文档
+├── LICENSE                          # MIT 许可证
 └── references/
     ├── 接替状态评估.md               # 状态分级参考
     ├── 上下文文件索引.md             # 文件读取指南
     └── 文件与项目识别.md             # 项目识别与检查
-```
+`
 
 ## 状态评估
 
-### 🟢 完整接替 (Green)
-- 所有上下文文件存在且最新
-- 任务状态清晰，无悬空操作
-- 用户偏好已记录
-- 项目文件完整
-
-### 🟡 部分接替 (Yellow)
-- 部分文件缺失或过时
-- 任务状态不明
-- 需要用户确认
-
-### 🔴 断档接替 (Red)
-- 关键文件全部缺失
-- 无历史记录
-- 需要重新建立上下文
+| 状态 | 说明 |
+|------|------|
+| 🟢 完整接替 | 所有上下文文件存在且最新，任务状态清晰 |
+| 🟡 部分接替 | 部分文件缺失或过时，需要用户确认 |
+| 🔴 断档接替 | 关键文件全部缺失，需要重新建立上下文 |
 
 ## 与其他 Skills 配合
 
@@ -148,33 +138,58 @@ MIT License
 
 ---
 
-## English Version
+## English
 
 ### Overview
 
 **Successor** is a skill designed for AI Agents to handle succession and task continuity. When an agent reaches communication limits, session resets, or needs a new agent to take over, it ensures complete context, task, memory, and file inheritance.
 
-### Key Features
+### Core Responsibilities
 
-- Context migration from previous sessions
-- Task state continuity
-- Memory system takeover
-- File and project handover
-- Seamless task resumption
+1. **Complete Context** — Preserve key decisions, tasks, and preferences from conversation history
+2. **Task Status** — Complete handover of ongoing work
+3. **Memory Takeover** — Seamless continuation of long-term memory files
+4. **File/Project Handover** — Complete transfer of all files, directories, and projects created by the predecessor
+5. **Seamless Resumption** — Continue from where the previous agent left off
+
+### Trigger Scenarios
+
+- Original agent indicates \"communication limit reached\" or \"about to reset\"
+- User says \"take over previous work\" or \"continue the last task\"
+- New session requires reading historical context
+- Need to take over files, code, documents, projects created by predecessor
+- Any scenario requiring cross-agent work continuation
+
+### Trigger Keywords
+
+succession, inherit, continue, context migration, 	ask resumption, memory handoff, ile takeover, project continuation
 
 ### Installation
 
-```bash
+`ash
 skillhub install successor
-```
+`
 
 ### Usage
 
-Simply mention keywords like "接替" (take over), "继续" (continue), or "继承" (inherit) to trigger the skill. It will automatically:
+Mention keywords like \"接替\" (take over), \"继续\" (continue), or \"继承\" (inherit) to trigger the skill. It will automatically:
 1. Read relevant context files
 2. Scan for project files
 3. Build a succession summary
 4. Confirm with the user
+
+### Directory Structure
+
+`
+successor/
+├── SKILL.md                         # Core skill definition
+├── README.md                        # Bilingual documentation
+├── LICENSE                          # MIT License
+└── references/
+    ├── 接替状态评估.md               # Status assessment
+    ├── 上下文文件索引.md             # File reading guide
+    └── 文件与项目识别.md             # Project identification
+`
 
 ### License
 
