@@ -1,196 +1,64 @@
-# 继承者 (Successor) — 智能体接替与任务延续
+# 继承者（Successor）— 智能体接替技能
 
-[English](#english) | 中文
+[中文](README.md) | [English](README_en.md)
+
+---
 
 ## 概述
 
-**继承者** (Successor) 是一个专为 AI Agent 设计的智能接替与任务延续 Skill。当智能体达到沟通上限、会话重置、或需要新智能体接替工作时，确保上下文、任务、记忆、文件的完整传承。
+**继承者（Successor）** 是一个 AI Agent 接替与任务延续技能，专为解决智能体通信上限问题而设计。当智能体达到对话上限时，继承者自动承接上下文、任务状态、记忆系统和文件/项目文件，实现无缝工作衔接。
 
-## 核心职责
+## 核心功能
 
-当原智能体达到沟通上限、或需要新智能体接替工作时，确保：
-
-1. **上下文完整** — 不遗漏对话历史中的关键决策、任务、偏好
-2. **任务状态** — 当前进行中的工作完整交接
-3. **记忆接管** — 长期记忆文件无缝衔接
-4. **文件/项目接管** — 所有由前任创建的文件、目录、项目完整移交
-5. **断点续传** — 新智能体可从中断处继续，无需重新摸索
-
-## 触发场景
-
-- 原智能体提示"沟通上限"、"即将重置"
-- 用户说"接替之前的工作"、"继续上次的任务"
-- 新会话开始，需要读取历史上下文
-- 需要接管前任创建的文件、代码、文档、项目
-- 任何需要跨智能体延续工作的情况
-
-## 触发关键词
-
-接替, 继承, 延续, 上下文迁移, 任务续接, 记忆交接, 文件接管, 项目延续
-
-## 使用场景
-
-### 1. 智能体沟通上限接替
-- 原智能体提示"沟通上限"、"即将重置"
-- 新智能体启动，需要继承前任所有工作状态
-- 上下文完整迁移，无信息丢失
-
-### 2. 跨会话任务延续
-- 用户说"继续上次的任务"、"接替之前的工作"
-- 长任务中断后恢复执行
-- 多阶段工作流的断点续传
-
-### 3. 记忆系统接管
-- 长期记忆 (MEMORY.md) 无缝衔接
-- 短期记忆 (memory/YYYY-MM-DD.md) 完整读取
-- 用户偏好、关键决策、待办事项全面继承
-
-### 4. 文件与项目接管
-- 扫描并识别前任创建的所有文件与目录
-- 理解项目结构，评估项目状态
-- 确认关键文件位置和项目进度
+- **上下文迁移** — 自动读取并整合对话历史、决策过程
+- **任务状态衔接** — 识别当前任务进展，分析未完成项
+- **记忆接管** — 读取 MEMORY.md 和 daily notes，继承长期记忆
+- **文件/项目接管** — 识别工作区文件，了解项目结构与状态
+- **断点续传** — 基于已有信息，无缝衔接工作，不遗漏任何关键上下文
 
 ## 安装
 
-### 通过 SkillHub 安装（推荐）
+### SkillHub（推荐）
 
 `ash
-skillhub install successor
+npx skills add richard3153/successor-skill@successor
 `
 
 ### 手动安装
 
-1. 克隆仓库：
-`ash
-git clone https://github.com/richard3153/successor-skill.git
-`
+将 skills/successor/ 目录复制到你的 OpenClaw skills 目录即可。
 
-2. 复制到 OpenClaw skills 目录：
-`ash
-# Windows
-copy successor %USERPROFILE%\.qclaw\skills\
+## 使用场景
 
-# macOS / Linux
-cp -r successor ~/.qclaw/skills/
-`
+- 原智能体报告「达到沟通上限」「即将结束会话」
+- 需要在新会话中延续之前的复杂任务
+- 多人协作时，新智能体需要接手前任的工作
 
-## 接替工作流
+## 文件结构
 
 `
-1. 读取上下文文件
-   ├── SOUL.md          → 智能体身份与风格
-   ├── IDENTITY.md      → 名称、经历、配置
-   ├── USER.md          → 用户信息与偏好
-   ├── MEMORY.md        → 长期记忆
-   └── memory/          → 近期工作记录
-
-2. 扫描项目文件
-   ├── 工作区文件扫描
-   ├── 项目结构识别
-   └── 进行中项目确认
-
-3. 构建接替摘要
-   ├── 用户信息确认
-   ├── 当前任务状态
-   ├── 识别项目列表
-   └── 待办事项整理
-
-4. 任务延续
-   ├── 确认文件修改进度
-   ├── 检查外部操作状态
-   └── 继续执行任务
+successor-skill/
+└── skills/
+    └── successor/
+        ├── SKILL.md                    # 核心技能定义
+        └── references/
+            ├── 接替状态评估.md          # 详细的评估框架
+            ├── 上下文文件索引.md        # 上下文文件说明
+            └── 文件与项目识别.md        # 文件识别指南
 `
 
-## 目录结构
+## 关键词
 
-`
-successor/
-├── SKILL.md                         # 核心技能定义
-├── README.md                        # 双语说明文档
-├── LICENSE                          # MIT 许可证
-└── references/
-    ├── 接替状态评估.md               # 状态分级参考
-    ├── 上下文文件索引.md             # 文件读取指南
-    └── 文件与项目识别.md             # 项目识别与检查
-`
+接替、继承、延续、上下文迁移、任务续接、记忆交接、文件接管、项目延续、successor、inherit、continue
 
-## 状态评估
+## 开源协议
 
-| 状态 | 说明 |
-|------|------|
-| 🟢 完整接替 | 所有上下文文件存在且最新，任务状态清晰 |
-| 🟡 部分接替 | 部分文件缺失或过时，需要用户确认 |
-| 🔴 断档接替 | 关键文件全部缺失，需要重新建立上下文 |
+MIT License — 详见 [LICENSE](LICENSE) 文件
 
-## 与其他 Skills 配合
+## 作者
 
-- **memory 系统**：依赖 memory/ 目录进行记忆读取
-- **qclaw-cron-skill**：检查定时任务状态
-- **qclaw-text-file**：确保文件编码正确
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 许可证
-
-MIT License
+richard3153
 
 ---
 
-## English
-
-### Overview
-
-**Successor** is a skill designed for AI Agents to handle succession and task continuity. When an agent reaches communication limits, session resets, or needs a new agent to take over, it ensures complete context, task, memory, and file inheritance.
-
-### Core Responsibilities
-
-1. **Complete Context** — Preserve key decisions, tasks, and preferences from conversation history
-2. **Task Status** — Complete handover of ongoing work
-3. **Memory Takeover** — Seamless continuation of long-term memory files
-4. **File/Project Handover** — Complete transfer of all files, directories, and projects created by the predecessor
-5. **Seamless Resumption** — Continue from where the previous agent left off
-
-### Trigger Scenarios
-
-- Original agent indicates \"communication limit reached\" or \"about to reset\"
-- User says \"take over previous work\" or \"continue the last task\"
-- New session requires reading historical context
-- Need to take over files, code, documents, projects created by predecessor
-- Any scenario requiring cross-agent work continuation
-
-### Trigger Keywords
-
-succession, inherit, continue, context migration, 	ask resumption, memory handoff, ile takeover, project continuation
-
-### Installation
-
-`ash
-skillhub install successor
-`
-
-### Usage
-
-Mention keywords like \"接替\" (take over), \"继续\" (continue), or \"继承\" (inherit) to trigger the skill. It will automatically:
-1. Read relevant context files
-2. Scan for project files
-3. Build a succession summary
-4. Confirm with the user
-
-### Directory Structure
-
-`
-successor/
-├── SKILL.md                         # Core skill definition
-├── README.md                        # Bilingual documentation
-├── LICENSE                          # MIT License
-└── references/
-    ├── 接替状态评估.md               # Status assessment
-    ├── 上下文文件索引.md             # File reading guide
-    └── 文件与项目识别.md             # Project identification
-`
-
-### License
-
-MIT License
+*如果你觉得这个技能有用，欢迎 Star ⭐ 和分享！*
