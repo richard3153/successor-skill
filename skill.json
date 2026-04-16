@@ -1,6 +1,6 @@
 {
   ""name"": ""successor"",
-  ""description"": ""AI Agent Succession and Task Continuity Skill - 智能体接替与任务延续"",
+  ""description"": ""AI Agent Succession and Task Continuity Skill — 智能体接替与任务延续"",
   ""version"": ""1.0.0"",
   ""author"": ""richard3153"",
   ""homepage"": ""https://github.com/richard3153/successor-skill"",
@@ -22,16 +22,12 @@
     ""任务续接"",
     ""记忆交接"",
     ""文件接管"",
-    ""项目延续"",
-    ""succession"",
-    ""inherit"",
-    ""continue""
+    ""项目延续""
   ],
+  ""install"": ""npx skills add richard3153/successor-skill@successor"",
   ""files"": [
-    ""SKILL.md"",
-    ""README.md"",
-    ""LICENSE"",
-    ""references/""
+    ""skills/successor/SKILL.md"",
+    ""skills/successor/references/""
   ],
   ""dependencies"": {},
   ""openclaw"": {
