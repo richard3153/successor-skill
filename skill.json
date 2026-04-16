@@ -1,0 +1,40 @@
+{
+  ""name"": ""successor"",
+  ""description"": ""AI Agent Succession and Task Continuity Skill - 智能体接替与任务延续"",
+  ""version"": ""1.0.0"",
+  ""author"": ""richard3153"",
+  ""homepage"": ""https://github.com/richard3153/successor-skill"",
+  ""repository"": ""https://github.com/richard3153/successor-skill"",
+  ""keywords"": [
+    ""openclaw-skill"",
+    ""ai-agent"",
+    ""succession"",
+    ""task-continuity"",
+    ""context-migration"",
+    ""qclaw"",
+    ""claude-agent""
+  ],
+  ""triggers"": [
+    ""接替"",
+    ""继承"",
+    ""延续"",
+    ""上下文迁移"",
+    ""任务续接"",
+    ""记忆交接"",
+    ""文件接管"",
+    ""项目延续"",
+    ""succession"",
+    ""inherit"",
+    ""continue""
+  ],
+  ""files"": [
+    ""SKILL.md"",
+    ""README.md"",
+    ""LICENSE"",
+    ""references/""
+  ],
+  ""dependencies"": {},
+  ""openclaw"": {
+    ""minVersion"": ""2.0.0""
+  }
+}
